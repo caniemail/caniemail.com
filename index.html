@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Can I Email?</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.0.0/dist/sheetrock.min.js"></script>
+</head>
+<body>
+  <h1>CSS Support for <code>resolution</code></h1>
+  <table id="support">
+    <script id="support-template" type="text/x-handlebars-template">
+      <tr>
+        {{#each cells}}
+          <td {{{when this 'style="background: green"' 'style="background: red"'}}}>
+            {{@key}}
+          </td>
+        {{/each}}
+      </tr>
+    </script>
+  </ol>
+  <script>
+    $(document).ready(function() {
+      Handlebars.registerHelper('when', function(conditional, thenClause, elseClause) {
+        if (conditional) {
+          return thenClause;
+        } else {
+          return elseClause;
+        }
+      });
+
+      Handlebars.registerHelper('not', function(conditional) {
+        return !conditional;
+      });
+
+      var SupportTemplate = Handlebars.compile($('#support-template').html());
+
+      $('#support').sheetrock({
+        url: 'https://docs.google.com/spreadsheets/d/18zHVSZDzp5ZMXWGwohTIFVTZ3e1SMiicYvWBBmQbkzk/edit#gid=167645803',
+        query: "select * where A = 'resolution'",
+        rowTemplate: SupportTemplate
+      });
+    });
+  </script>
+</body>
+</html>

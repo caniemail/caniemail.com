@@ -1,0 +1,19 @@
+{
+  "name": "caniemail",
+  "version": "0.1.0",
+  "description": "Can I Email?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caniemail/caniemail.com.git"
+  },
+  "author": "Rebelmail",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/caniemail/caniemail.com/issues"
+  },
+  "homepage": "https://github.com/caniemail/caniemail.com#readme"
+}
